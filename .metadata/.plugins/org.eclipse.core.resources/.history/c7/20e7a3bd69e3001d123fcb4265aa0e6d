@@ -1,0 +1,67 @@
+//This code will first ask the user for the number of songs in the playlist.
+//It will then create a list to store the songs.
+//It will then iterate through the playlist and add each song to the list. 
+//Finally, it will check if the playlist is repeating and print the result.
+
+package test;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+public class t_5_playlist {
+	class Song {
+
+	    private String name;
+
+	    public Song(String name) {
+	        this.name = name;
+	    }
+
+	    public String getName() {
+	        return name;
+	    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the number of songs in the playlist.
+        int numberOfSongs = scanner.nextInt();
+
+        // Create a list to store the songs.
+        List<Song> playlist = new ArrayList<>();
+
+        // Iterate through the playlist and add each song to the list.
+        for (int i = 0; i < numberOfSongs; i++) {
+            String songName = scanner.next();
+            playlist.add(new Song(songName));
+        }
+
+        // Check if the playlist is repeating.
+        boolean isRepeating = isRepeatingPlaylist(playlist);
+
+        // Print the result.
+        if (isRepeating) {
+            System.out.println("The playlist is repeating.");
+        } else {
+            System.out.println("The playlist is not repeating.");
+        }
+    }
+
+    public static boolean isRepeatingPlaylist(List<Song> playlist) {
+        Set<Song> seen = new HashSet<>();
+        for (Song song : playlist) {
+            if (seen.contains(song)) {
+                return true;
+            }
+            seen.add(song);
+        }
+        return false;
+    }
+
+}
+
+
+
+}

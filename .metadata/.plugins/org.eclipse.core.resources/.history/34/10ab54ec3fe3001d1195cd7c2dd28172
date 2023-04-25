@@ -1,0 +1,36 @@
+package test;
+
+public class t_3_rootsFinder {
+	
+	public static int[] find_roots(int a, int b, int c) {
+		if (a == 0) {
+			System.out.println("The value of a must be non-zero.");
+		}
+
+		int noOfRoots = b * b - 4 * a * c;
+
+		if (noOfRoots < 0) {
+			return new int[] {};
+		}
+
+		if (noOfRoots == 0) {
+			return new int[] { -b / (2 * a) };
+		}
+
+		// If the discriminant is positive, there are two real roots.
+		double root1 = (-b + Math.sqrt(noOfRoots)) / (2 * a);
+		double root2 = (-b - Math.sqrt(noOfRoots)) / (2 * a);
+		new int[] res { root1, root2 } = double[] { root1, root2 }
+		return  ;
+	}
+
+	public static void main(String[] args) {
+		int a = 2;
+		int b = 10;
+		int c = 8;
+
+		int[] roots = find_roots(a, b, c);
+
+		System.out.println("The roots of the equation ax^2 + bx + c = 0 are " + roots[0] + " and " + roots[1]);
+	}
+}

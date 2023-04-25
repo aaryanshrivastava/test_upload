@@ -1,0 +1,39 @@
+package test;
+
+public class t_3_rootsFinder {
+	public static double[] find_roots(double a, double b, double c) {
+		// Check for division by zero.
+		if (a == 0) {
+			throw new IllegalArgumentException("The value of a must be non-zero.");
+		}
+
+		// Calculate the discriminant.
+		double discriminant = b * b - 4 * a * c;
+
+		// If the discriminant is negative, there are no real roots.
+		if (discriminant < 0) {
+			return new double[] {};
+		}
+
+		// If the discriminant is zero, there is one real root.
+		if (discriminant == 0) {
+			return new double[] { -b / (2 * a) };
+		}
+
+		// If the discriminant is positive, there are two real roots.
+		double root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+		double root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+
+		return new double[] { root1, root2 };
+	}
+
+	public static void main(String[] args) {
+		double a = 2;
+		double b = 10;
+		double c = 8;
+
+		double[] roots = find_roots(a, b, c);
+
+		System.out.println("The roots of the equation ax^2 + bx + c = 0 are " + roots[0] + " and " + roots[1]);
+	}
+}

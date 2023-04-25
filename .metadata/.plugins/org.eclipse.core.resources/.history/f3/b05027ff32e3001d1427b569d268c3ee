@@ -1,0 +1,25 @@
+package test;
+
+public class wayExists {
+
+	public static int countNumbers(int[] sortedArray, int lessThan) {
+        int count = 0;
+        if(sortedArray == null) {
+            return 0;
+        }
+        for (int i = 0; i < sortedArray.length; i++) {
+            if (sortedArray[i] < lessThan) {
+                count++;
+            } else  {
+                break;
+            }
+        }
+        return count;
+    } 
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

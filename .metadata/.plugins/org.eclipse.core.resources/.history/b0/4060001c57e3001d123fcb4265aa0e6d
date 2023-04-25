@@ -1,0 +1,69 @@
+package test;
+
+public class t_4_bst {
+
+	static class Node {
+		int data;
+		Node left, right;
+		public int value;
+	};
+
+	static Node newNode(int item) {
+		Node temp = new Node();
+		temp.data = item;
+		temp.left = temp.right = null;
+		return temp;
+	}
+
+	public static boolean contains(Node root, int value) {
+		if (root == null) {
+			return false;
+		}
+
+		if (value == root.value) {
+			return true;
+		} else if (value < root.value) {
+			return contains(root.left, value);
+		} else {
+			return contains(root.right, value);
+		}
+	}
+
+	/*
+	 * A utility function to insert a new Node with given key in BST
+	 */
+	static Node insert(Node Node, int data) {
+		/* If the tree is empty, return a new Node */
+		if (Node == null)
+			return newNode(data);
+
+		/* Otherwise, recur down the tree */
+		if (data < Node.data)
+			Node.left = insert(Node.left, data);
+		else if (data > Node.data)
+			Node.right = insert(Node.right, data);
+
+		/* return the (unchanged) Node pointer */
+		return Node;
+	}
+
+	// Driver code
+	public static void main(String args[]) {
+		/*
+		 * Let us create following BST 50 / \ 30 70 / \ / \ 20 40 60 80
+		 */
+		Node root = null;
+		root = insert(root, 50);
+		insert(root, 30);
+		insert(root, 20);
+		insert(root, 40);
+		insert(root, 70);
+		insert(root, 60);
+		insert(root, 80);
+		
+		if (contains(root, 50))
+			System.out.println("YES");
+		else
+			System.out.println("NO");
+	}
+}
